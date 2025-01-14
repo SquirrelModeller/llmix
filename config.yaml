@@ -1,0 +1,9 @@
+llm:
+  provider: openai
+  openai:
+    api_key: null
+music:
+  provider: spotify
+  spotify:
+    client_id: null
+    client_secret: null

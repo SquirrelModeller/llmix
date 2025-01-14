@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+
+# System files
+.DS_Store
+
+# Virtual python venv
+pyvenv/
+
+# Downloaded models
+models/*
+
+# Temporary folders for development
+temp/
+test_output/
