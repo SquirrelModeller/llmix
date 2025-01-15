@@ -23,3 +23,6 @@ models/*
 # Temporary folders for development
 temp/
 test_output/
+
+# User information cache
+user_cache/
