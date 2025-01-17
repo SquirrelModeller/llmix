@@ -21,6 +21,7 @@ class UserToken:
     access_token: str
     refresh_token: str
     token_expiry: datetime
+    info: Optional[str] = None
 
     def __hash__(self):
         return hash(self.website)
@@ -88,7 +89,8 @@ class User:
                     "website": v.website,
                     "access_token": v.access_token,
                     "refresh_token": v.refresh_token,
-                    "token_expiry": v.token_expiry.isoformat()
+                    "token_expiry": v.token_expiry.isoformat(),
+                    "info": v.info,
                 } for k, v in self.connections.items()
             },
             "is_active": self.is_active
@@ -102,6 +104,7 @@ class User:
                 website=v["website"],
                 access_token=v["access_token"],
                 refresh_token=v["refresh_token"],
+                info=v["info"],
                 token_expiry=datetime.fromisoformat(v["token_expiry"])
             ) for k, v in data.get("connections", {}).items()
         }
@@ -133,6 +136,7 @@ class Track:
     title: str
     artist: Artist
     duration_ms: int
+    uri: str
     album: Optional['Album'] = None
     explicit: bool = False
     preview_url: Optional[str] = None

@@ -117,7 +117,8 @@ class UserManager:
             return user
 
         except ValueError as e:
-            print(f"Error: {e}")
+            logger.debug("User account creation failed: %s", e)
+            raise
 
     def user_login_prompt(self) -> Optional[User]:
         """Login user with input prompts"""
@@ -133,8 +134,10 @@ class UserManager:
             if not user.login(password):
                 raise ValueError("Incorrect password")
 
+            return user
         except ValueError as e:
-            print(f"Error: {e}")
+            logger.debug("User login failed: %s", e)
+            raise
 
     def user_logout(self, username) -> None:
         """Wrapper for user logout"""
@@ -151,7 +154,6 @@ class UserManager:
 
 
 def main():
-    """Main function for testing"""
     user_manager = UserManager()
 
     try:
